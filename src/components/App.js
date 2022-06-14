@@ -4,6 +4,14 @@ import Header from "./Header";
 import ToyForm from "./ToyForm";
 import ToyContainer from "./ToyContainer";
 
+//  └ ├ ┌ ─
+//
+//  App
+//   ├ Header
+//   ├ ToyForm
+//   ├ .buttonContainer
+//   └ ToyContainer
+//         └ ToyCard
 function App() {
   const [showForm, setShowForm] = useState(false);
 
