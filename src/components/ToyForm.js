@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
 function ToyForm() {
+  const blankToy = {
+    name: "",
+    image: "",
+    likes: 0,
+  };
+  const [newToy, setNewToy] = useState(blankToy);
+  const { newName, newImage } = newToy;
+
+  function handleNewToy(e) {
+    const value = e.value;
+    const name = e.name;
+
+    setNewToy({ [name]: value });
+  }
+
   return (
     <div className="container">
       <form className="add-toy-form">
@@ -10,6 +25,8 @@ function ToyForm() {
           name="name"
           placeholder="Enter a toy's name..."
           className="input-text"
+          onChange={handleNewToy}
+          value={newName}
         />
         <br />
         <input
@@ -17,6 +34,8 @@ function ToyForm() {
           name="image"
           placeholder="Enter a toy's image URL..."
           className="input-text"
+          onChange={handleNewToy}
+          value={newImage}
         />
         <br />
         <input
