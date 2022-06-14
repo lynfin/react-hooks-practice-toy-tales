@@ -29,11 +29,13 @@ function App() {
   function handleClick() {
     setShowForm((showForm) => !showForm);
   }
-
+  const addToy = (newToy) => {
+    setToys([...toys, newToy]);
+  };
   return (
     <>
       <Header />
-      {showForm ? <ToyForm /> : null}
+      {showForm ? <ToyForm onAddToy={addToy} /> : null}
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
