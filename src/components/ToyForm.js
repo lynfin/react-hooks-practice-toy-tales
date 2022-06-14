@@ -18,9 +18,18 @@ function ToyForm() {
   }
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("Creating new toy", newToy);
+    console.log("newToy on submit:", newToy);
+    fetch("http://localhost:3001/toys", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newToy),
+    })
+      .then((r) => r.json())
+      .then((createdToy) => console.log("Creating new toy", createdToy));
   }
-  console.log("newToy in state is", newToy);
+
   return (
     <div className="container">
       <form className="add-toy-form" onSubmit={handleSubmit}>
