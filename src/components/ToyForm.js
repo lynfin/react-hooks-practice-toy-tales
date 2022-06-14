@@ -7,26 +7,31 @@ function ToyForm() {
     likes: 0,
   };
   const [newToy, setNewToy] = useState(blankToy);
-  const { newName, newImage } = newToy;
 
-  function handleNewToy(e) {
-    const value = e.value;
-    const name = e.name;
+  function handleChange(e) {
+    const value = e.target.value;
+    const name = e.target.name;
 
-    setNewToy({ [name]: value });
+    // this does not seem to work, but is shown in https://reactjs.org/docs/forms.html
+    // setNewToy({ [name]: value });
+    setNewToy((prevToy) => ({ ...prevToy, [name]: value }));
   }
-
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log("Creating new toy", newToy);
+  }
+  console.log("newToy in state is", newToy);
   return (
     <div className="container">
-      <form className="add-toy-form">
+      <form className="add-toy-form" onSubmit={handleSubmit}>
         <h3>Create a toy!</h3>
         <input
           type="text"
           name="name"
           placeholder="Enter a toy's name..."
           className="input-text"
-          onChange={handleNewToy}
-          value={newName}
+          onChange={handleChange}
+          value={newToy.name}
         />
         <br />
         <input
@@ -34,8 +39,8 @@ function ToyForm() {
           name="image"
           placeholder="Enter a toy's image URL..."
           className="input-text"
-          onChange={handleNewToy}
-          value={newImage}
+          onChange={handleChange}
+          value={newToy.image}
         />
         <br />
         <input
