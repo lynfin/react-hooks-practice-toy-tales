@@ -1,6 +1,6 @@
 import React from "react";
 
-function ToyCard({ toy }) {
+function ToyCard({ toy, onRemoveToy }) {
   const { name, image, likes, id } = toy;
 
   return (

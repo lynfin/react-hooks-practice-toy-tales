@@ -32,6 +32,11 @@ function App() {
   const addToy = (newToy) => {
     setToys([...toys, newToy]);
   };
+
+  const handleRemoveToy = (id) => {
+    setToys(toys.fetch((toy) => toy.id !== id));
+  };
+
   return (
     <>
       <Header />
@@ -39,7 +44,7 @@ function App() {
       <div className="buttonContainer">
         <button onClick={handleClick}>Add a Toy</button>
       </div>
-      <ToyContainer toys={toys} />
+      <ToyContainer toys={toys} onRemoveToy={handleRemoveToy} />
     </>
   );
 }
