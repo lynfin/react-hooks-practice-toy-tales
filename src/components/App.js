@@ -34,7 +34,7 @@ function App() {
   };
 
   const handleRemoveToy = (id) => {
-    setToys(toys.fetch((toy) => toy.id !== id));
+    setToys(toys.filter((toy) => toy.id !== id));
   };
 
   return (

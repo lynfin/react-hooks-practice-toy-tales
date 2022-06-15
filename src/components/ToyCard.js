@@ -9,7 +9,7 @@ function ToyCard({ toy, onRemoveToy }) {
       headers: {
         "Content-Type": "application/json",
       },
-    }).then(() => console.log("Deleted toy", id));
+    }).then(() => onRemoveToy(id));
   };
   return (
     <div className="card">
